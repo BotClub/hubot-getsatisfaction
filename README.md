@@ -16,12 +16,12 @@ Then add **hubot-getsatisfaction** to your `external-scripts.json`:
 ["hubot-getsatisfaction"]
 ```
 
-# Configuration:
+## Configuration
 ```
 HUBOT_GETSATISFACTION_COMPANY=API Company Name URL Slug
 ```
 
-# Commands:
+## Usage
 ```
 hubot getsat (all) ideas - returns the total count of all ideas.
 hubot getsat company - returns the total count of all ideas.
