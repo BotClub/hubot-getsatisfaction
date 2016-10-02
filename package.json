@@ -1,7 +1,7 @@
 {
   "name": "hubot-getsatisfaction",
-  "description": "Queries Get Satisfaction for information about topics",
-  "version": "0.0.2",
+  "description": "Hubot Get Satisfaction script to query topics by company",
+  "version": "0.0.3",
   "author": "John Wang <johncwang@gmail.com>",
   "license": "MIT",
   "keywords": [
