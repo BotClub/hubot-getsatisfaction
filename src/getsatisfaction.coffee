@@ -24,7 +24,8 @@ company_web_link = () ->
   "[#{company_id}](http://getsatisfaction.com/#{company_id})"
 
 topic_item = (topic) ->
-  "#{topic.id} (+#{topic.me_too_count}): [#{topic.subject}](#{topic.at_sfn})\n"
+  subject = topic.subject.replace /\*/g, '-'
+  "#{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn})\n"
 
 uri_query_string = (params) ->
   pairs = []
@@ -40,6 +41,10 @@ filter_value = (key, value) ->
       "active" : "recently_active",
       "replies" : "most_replies",
       "votes" : "most_me_toos"
+    },
+    "status" : {
+      "closed" : "complete,rejected",
+      "open" : "none,pending,active",
     }
   }
   if key of filter_aliases && value of filter_aliases[key]
