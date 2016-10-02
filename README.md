@@ -18,7 +18,7 @@ Then add **hubot-getsatisfaction** to your `external-scripts.json`:
 
 # Configuration:
 ```
-HUBOT_GETSATISFACTION_COMPANY_ID
+HUBOT_GETSATISFACTION_COMPANY=API Company Name URL Slug
 ```
 
 # Commands:
