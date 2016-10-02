@@ -40,9 +40,11 @@ To search topics you can use the following topic filters which must be placed ah
 
 | Filter | Values | Notes |
 |--------|--------|-------|
-| `sort` | `votes, newest, active, replies, unanswered` | |
+| `sort` | `votes, newest, active, replies, unanswered` | `votes` is an alias for `most_me_toos` |
 | `style` | `question, problem, praise, idea, update` | |
 | `status` | `none, pending, active, complete, rejected, open, closed` | `open` and `closed` are meta values. `open` = `none or pending or active`, `closed` = `complete or rejected` |
+
+More information on filters is available here: [https://education.getsatisfaction.com/reference-guide/api/api-resources/](https://education.getsatisfaction.com/reference-guide/api/api-resources/).
 
 ### Example Usage
 
