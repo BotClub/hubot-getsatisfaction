@@ -42,7 +42,7 @@ To search topics you can use the following topic filters which must be placed ah
 |--------|--------|
 | `sort` | `votes, newest, active, replies, unanswered` |
 | `style` | `question, problem, praise, idea, update` |
-| `status` | `none, pending, active, complete, rejected` |
+| `status` | `none, pending, active, complete, rejected, open, closed` |
 
 ### Example Usage
 
