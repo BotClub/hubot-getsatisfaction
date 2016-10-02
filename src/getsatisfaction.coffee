@@ -9,6 +9,7 @@
 #   hubot getsat (all) ideas - returns the total count of all ideas.
 #   hubot getsat company - returns the total count of all ideas.
 #   hubot getsat company <COMPANY_NAME> - sets company_name.
+#   hubot getsat help
 
 sys = require 'sys' # Used for debugging
 company_id = "#{process.env.HUBOT_GETSATISFACTION_COMPANY}"
@@ -84,6 +85,9 @@ getsatisfaction_request = (msg, url, handler) ->
       handler content
 
 module.exports = (robot) ->
+
+  robot.respond /(?:getsat|gs) help\s*$/i, (msg) ->
+    msg.send "> See: [https://github.com/grokify/hubot-getsatisfaction](https://github.com/grokify/hubot-getsatisfaction)"
 
   robot.respond /(?:getsat|gs) company\s*$/i, (msg) ->
     company_link = company_web_link()

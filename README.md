@@ -41,6 +41,25 @@ To search topics you can use the following topic filters which must be placed ah
 | `style` | `question, problem, praise, idea, update` |
 | `status` | `none, pending, active, complete, rejected` |
 
+### Example Usage
+
+Create a Hubot instance, add `hubot-getsatisfaction` to `external-scripts.json` and start.
+
+The following example uses the [`hubot-glip` adapter](https://github.com/tylerlong/hubot-glip).
+
+```bash
+$ mkdir myhubot
+$ cd myhubot
+$ yo hubot
+$ vi external-scripts.json
+$ HUBOT_GLIP_HOST=glip.com \
+HUBOT_GLIP_EMAIL=hubot@example.com \
+HUBOT_GLIP_PASSWORD=MySecretPassword \
+HUBOT_GETSATISFACTION_COMPANY=ringcentraldev ./bin/hubot -n hubot -a glip
+```
+
+![Hubot Get Satisfaction Demo](docs/images/hubot_getsatisfaction_demo_glip.png.png)
+
 ## Links
 
 Project Repo
