@@ -25,7 +25,7 @@ company_web_link = () ->
 
 topic_item = (topic) ->
   subject = topic.subject.replace /\*/g, '-'
-  status = topic.status || 'no status'
+  status = topic.status || 'none'
   style = topic.style.charAt(0).toUpperCase() + topic.style.slice(1);
   "#{style} #{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) (#{status})\n"
 
