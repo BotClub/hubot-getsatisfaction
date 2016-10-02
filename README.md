@@ -25,10 +25,21 @@ HUBOT_GETSATISFACTION_COMPANY=API Company Name URL Slug
 
 ## Usage
 ```
+hubot getsat search topics <QUERY> - returns a list of matching topics.
 hubot getsat (all) ideas - returns the total count of all ideas.
 hubot getsat company - returns the total count of all ideas.
 hubot getsat company <COMPANY_NAME> - sets company_name.
 ```
+
+### Search Topics
+
+To search topics you can use the following topic filters which must be placed ahead of your query. For example `hubot getsat search topics sort:votes style:idea glip`.
+
+| filter | values |
+|--------|--------|
+| `sort` | `votes, newest, active, replies, unanswered` |
+| `style` | `question, problem, praise, idea, update` |
+| `status` | `none, pending, active, complete, rejected` |
 
 ## Links
 
