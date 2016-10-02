@@ -25,7 +25,8 @@ company_web_link = () ->
 
 topic_item = (topic) ->
   subject = topic.subject.replace /\*/g, '-'
-  "#{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn})\n"
+  status = topic.status || 'no status'
+  "#{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) (#{status})\n"
 
 uri_query_string = (params) ->
   pairs = []

@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+- **0.0.4** - 2016-10-02
+  - Add status to topic lists
 - **0.0.3** - 2016-10-02
   - Add routes for `search topics`
   - Add fix to replace `*` in subject for Markdown rendering
