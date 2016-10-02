@@ -38,11 +38,11 @@ hubot getsat company <COMPANY_NAME> - sets company_name.
 
 To search topics you can use the following topic filters which must be placed ahead of your query. For example `hubot getsat search topics sort:votes style:idea glip`.
 
-| filter | values |
-|--------|--------|
-| `sort` | `votes, newest, active, replies, unanswered` |
-| `style` | `question, problem, praise, idea, update` |
-| `status` | `none, pending, active, complete, rejected, open, closed` |
+| Filter | Values | Notes |
+|--------|--------|-------|
+| `sort` | `votes, newest, active, replies, unanswered` | |
+| `style` | `question, problem, praise, idea, update` | |
+| `status` | `none, pending, active, complete, rejected, open, closed` | `open` and `closed` are meta values. `open` = `none or pending or active`, `closed` = `complete or rejected` |
 
 ### Example Usage
 
