@@ -1,5 +1,7 @@
 # hubot-getsatisfaction
 
+![Hubot Get Satisfaction](docs/images/hubot_getsatisfaction.png)
+
 Queries Get Satisfaction for information about support tickets
 
 See [`src/getsatisfaction.coffee`](src/getsatisfaction.coffee) for full documentation.
