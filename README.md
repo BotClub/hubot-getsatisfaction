@@ -2,7 +2,7 @@
 
 ![Hubot Get Satisfaction](docs/images/hubot_getsatisfaction.png)
 
-Hubot Get Satisfaction adapter script to query topics by company.
+Hubot Get Satisfaction handler script to query topics by company.
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
