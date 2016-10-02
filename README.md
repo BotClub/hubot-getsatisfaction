@@ -4,8 +4,11 @@
 
 Hubot Get Satisfaction handler script to query topics by company.
 
-  [![NPM Version][npm-image]][npm-url]
-  [![NPM Downloads][downloads-image]][downloads-url]
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+[![License][license-svg]][license-link]
+
+[![Stories in Ready][story-status-svg]][story-status-link]
 
 See [`src/getsatisfaction.coffee`](src/getsatisfaction.coffee) for full documentation.
 
@@ -97,3 +100,7 @@ Hubot Get Satisfaction script &copy; 2016 by John Wang
  [npm-url]: https://npmjs.org/package/hubot-getsatisfaction
  [downloads-image]: https://img.shields.io/npm/dm/hubot-getsatisfaction.svg
  [downloads-url]: https://npmjs.org/package/hubot-getsatisfaction
+ [story-status-svg]: https://badge.waffle.io/grokify/hubot-getsatisfaction.svg?label=ready&title=Ready
+ [story-status-link]: https://waffle.io/grokify/hubot-getsatisfaction
+ [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
+ [license-link]: https://github.com/grokify/hubot-getsatisfaction/blob/master/LICENSE.md
