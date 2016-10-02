@@ -55,10 +55,10 @@ $ vi external-scripts.json
 $ HUBOT_GLIP_HOST=glip.com \
 HUBOT_GLIP_EMAIL=hubot@example.com \
 HUBOT_GLIP_PASSWORD=MySecretPassword \
-HUBOT_GETSATISFACTION_COMPANY=ringcentraldev ./bin/hubot -n hubot -a glip
+HUBOT_GETSATISFACTION_COMPANY=ringcentral ./bin/hubot -n hubot -a glip
 ```
 
-![Hubot Get Satisfaction Demo](docs/images/hubot_getsatisfaction_demo_glip_500x.png)
+![Hubot Get Satisfaction Demo](docs/images/hubot_getsatisfaction_demo_glip_ringcentral-ringcentraldev_500x.png)
 
 ## Links
 
