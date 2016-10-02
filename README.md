@@ -58,7 +58,7 @@ HUBOT_GLIP_PASSWORD=MySecretPassword \
 HUBOT_GETSATISFACTION_COMPANY=ringcentraldev ./bin/hubot -n hubot -a glip
 ```
 
-![Hubot Get Satisfaction Demo](docs/images/hubot_getsatisfaction_demo_glip.png)
+![Hubot Get Satisfaction Demo](docs/images/hubot_getsatisfaction_demo_glip.png =300x)
 
 ## Links
 
