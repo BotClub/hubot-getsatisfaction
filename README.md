@@ -80,7 +80,8 @@ Hubot
 
 Get Satisfaction API
 
-* https://education.getsatisfaction.com/reference-guide/api/
+* API Reference: https://education.getsatisfaction.com/reference-guide/api/
+* API Specs: https://github.com/grokify/api-specs/tree/master/specs/getsatisfaction
 
 ## Contributing
 

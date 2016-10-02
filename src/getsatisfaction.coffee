@@ -27,7 +27,7 @@ topic_item = (topic) ->
   subject = topic.subject.replace /\*/g, '-'
   status = topic.status || 'none'
   style = topic.style.charAt(0).toUpperCase() + topic.style.slice(1);
-  "#{style} #{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) (#{status})\n"
+  "* #{style} #{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) (#{status})\n"
 
 uri_query_string = (params) ->
   pairs = []
@@ -118,8 +118,7 @@ module.exports = (robot) ->
       company_link = company_web_link()
       content = "> #{results.total} ideas for: #{company_link}\n"
       for result in results.data
-        line = topic_item(result)
-        content += "* #{line}"
+        content += topic_item(result)
       msg.send content
 
   robot.respond /(?:getsat|gs)\s+search\s+topics\s+(\S.*)\s*$/i, (msg) ->
@@ -130,6 +129,5 @@ module.exports = (robot) ->
       company_link = company_web_link()
       content = "> #{results.total} #{company_link} topics for query: #{query_robot}\n"
       for result in results.data
-        line = topic_item(result)
-        content += "* #{line}"
+        content += topic_item(result)
       msg.send content
