@@ -5,7 +5,7 @@
 #   HUBOT_GETSATISFACTION_COMPANY
 #
 # Commands:
-#   hubot getsat search topics <QUERY> - returns a list of matching topics.
+#   hubot getsat search (topics) <QUERY> - returns a list of matching topics.
 #   hubot getsat (all) ideas - returns the total count of all ideas.
 #   hubot getsat company - returns the total count of all ideas.
 #   hubot getsat company <COMPANY_NAME> - sets company_name.
@@ -117,17 +117,15 @@ module.exports = (robot) ->
     getsatisfaction_request msg, query_url, (results) ->
       company_link = company_web_link()
       content = "> #{results.total} ideas for: #{company_link}\n"
-      for result in results.data
-        content += topic_item(result)
+      content += topic_item(result) for result in results.data
       msg.send content
 
-  robot.respond /(?:getsat|gs)\s+search\s+topics\s+(\S.*)\s*$/i, (msg) ->
+  robot.respond /(?:getsat|gs)\s+search\s+(?:topics\s+)?(\S.*)\s*$/i, (msg) ->
     query_robot = msg.match[1]
     query_params = topics_query_robot_to_url(query_robot)
     query_url = company_url(company_id, queries.topics) + '?' + query_params
     getsatisfaction_request msg, query_url, (results) ->
       company_link = company_web_link()
       content = "> #{results.total} #{company_link} topics for query: #{query_robot}\n"
-      for result in results.data
-        content += topic_item(result)
+      content += topic_item(result) for result in results.data
       msg.send content
