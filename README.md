@@ -2,7 +2,7 @@
 
 ![Hubot Get Satisfaction](docs/images/hubot_getsatisfaction.png)
 
-Queries Get Satisfaction for information about support tickets
+Hubot Get Satisfaction adapter script to query topics by company.
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
@@ -95,4 +95,3 @@ Hubot Get Satisfaction script &copy; 2016 by John Wang
  [npm-url]: https://npmjs.org/package/hubot-getsatisfaction
  [downloads-image]: https://img.shields.io/npm/dm/hubot-getsatisfaction.svg
  [downloads-url]: https://npmjs.org/package/hubot-getsatisfaction
- 
