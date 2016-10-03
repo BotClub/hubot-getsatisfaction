@@ -5,7 +5,6 @@
 Hubot Get Satisfaction handler script to query topics by company.
 
 [![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
 [![License][license-svg]][license-link]
 
 [![Stories in Ready][story-status-svg]][story-status-link]
