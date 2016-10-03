@@ -63,8 +63,7 @@ topics_query_robot_to_url = (query_robot) ->
     i_query_start = i
     match = filter.exec(word);
     if match != null
-      value = filter_value(match[1], match[2])
-      params[match[1]] = value
+      params[match[1]] = filter_value(match[1], match[2])
     else
       break
   if i < parts.length
