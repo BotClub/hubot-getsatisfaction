@@ -35,7 +35,7 @@ uri_query_string = (params) ->
     pairs.push "#{k}=#{v}"
   query = pairs.join("&")
 
-filter_value = (key, value) ->
+filter_value = (k, v) ->
   filter_aliases = {
     "sort" : {
       "created" : "recently_created",
@@ -49,10 +49,10 @@ filter_value = (key, value) ->
       "open" : "none,pending,active",
     }
   }
-  if key of filter_aliases && value of filter_aliases[key]
-    filter_aliases[key][value]
+  if k of filter_aliases && v of filter_aliases[k]
+    filter_aliases[k][v]
   else
-    value
+    v
 
 topics_query_robot_to_url = (query_robot) ->
   params = {}
