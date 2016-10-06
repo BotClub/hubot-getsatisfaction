@@ -74,6 +74,10 @@ Project Repo
 
 * https://github.com/grokify/hubot-getsatisfaction
 
+Ready-to-Deploy version with Heroku One-Button Deployment
+
+* https://github.com/grokify/glipbot-getsatisfaction
+
 Hubot
 
 * https://github.com/github/hubot
