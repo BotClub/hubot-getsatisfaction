@@ -49,6 +49,8 @@ filter_value = (k, v) ->
       "open" : "none,pending,active",
     }
   }
+  k = k.toLowerCase()
+  v = v.toLowerCase()
   if k of filter_aliases && v of filter_aliases[k]
     filter_aliases[k][v]
   else
