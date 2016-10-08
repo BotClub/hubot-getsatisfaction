@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+- **0.0.5** - 2016-10-07
+  - Add case insensitive search filter support
 - **0.0.4** - 2016-10-02
   - Add status to topic list display
   - Add style to topic list display
