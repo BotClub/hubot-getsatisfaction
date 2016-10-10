@@ -26,8 +26,9 @@ company_web_link = () ->
 topic_item = (topic) ->
   subject = topic.subject.replace /\*/g, '-'
   status = topic.status || 'none'
-  style = topic.style.charAt(0).toUpperCase() + topic.style.slice(1);
-  "* #{style} #{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) (#{status})\n"
+  style = topic.style.charAt(0).toUpperCase() + topic.style.slice(1)
+  author = "[#{topic.author.name}](#{topic.author.at_sfn})"
+  "* #{style} #{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) by #{author} (#{status})\n"
 
 uri_query_string = (params) ->
   pairs = []
