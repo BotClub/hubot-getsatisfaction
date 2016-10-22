@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+- **0.1.0** - 2015-10-21
+  - Add JSON view support (in addition to Markdown)
 - **0.0.5** - 2016-10-06
   - Add case insensitive search filter support
 - **0.0.4** - 2016-10-02

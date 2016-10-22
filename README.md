@@ -12,6 +12,8 @@ Hubot Get Satisfaction handler script to query topics by company.
 
 See [`src/getsatisfaction.coffee`](src/getsatisfaction.coffee) for full documentation.
 
+This Hubot script supports JSON and Markdown views. which can be set using an environment variable or using adapter-based defaults.
+
 ## Installation
 
 In hubot project repo, run:
@@ -27,7 +29,10 @@ Then add **hubot-getsatisfaction** to your `external-scripts.json`:
 ## Configuration
 ```
 HUBOT_GETSATISFACTION_COMPANY=API Company Name URL Slug
+HUBOT_GETSATISFACTION_VIEW=json
 ```
+
+`HUBOT_GETSATISFACTION_VIEW` is optional and can be set to `json` or `markdown`. If `HUBOT_GETSATISFACTION_VIEW` is not specified, a default view is chosen by adapter.
 
 ## Usage
 ```

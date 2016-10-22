@@ -13,6 +13,7 @@
 
 sys = require 'sys' # Used for debugging
 company_id = "#{process.env.HUBOT_GETSATISFACTION_COMPANY}"
+view = "#{process.env.HUBOT_GETSATISFACTION_VIEW}"
 queries =
   topics: "topics.json"
   ideas: "topics.json?style=idea&sort=most_me_toos"
@@ -127,7 +128,10 @@ format_date_nice = (date) ->
   "#{mn_name} #{dt.getDate()}, #{dt.getFullYear()}"
 
 robot_content_type = (robot) ->
-  if robot.adapterName == 'glip'
+  views = { "json" : 1, "markdown" : 1 }
+  if views.key? view.toLowerCase()
+   return view.toLowerCase()
+  else if robot.adapterName == 'glip'
     return 'markdown'
   else
     return 'json'
@@ -217,11 +221,11 @@ module.exports = (robot) ->
   robot.respond /(?:getsat|gs)\s+list\s+ideas$/i, (msg) ->
     query_url = company_url(company_id, queries.ideas)
     getsatisfaction_request msg, query_url, (results) ->
-      msg.send topics_content(robot, 'ideas', '', results)
+      msg.send topics_content robot, 'ideas', '', results
 
   robot.respond /(?:getsat|gs)\s+search\s+(?:topics\s+)?(\S.*)\s*$/i, (msg) ->
     query_robot = msg.match[1]
     query_params = topics_query_robot_to_url(query_robot)
     query_url = company_url(company_id, queries.topics) + '?' + query_params
     getsatisfaction_request msg, query_url, (results) ->
-      msg.send topics_content(robot, 'topics', query_robot, results)
+      msg.send topics_content robot, 'topics', query_robot, results
