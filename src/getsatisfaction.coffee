@@ -20,15 +20,16 @@ queries =
 company_url = (company_id, url) ->
   "companies/#{company_id}/#{url}"
 
-company_web_link = () ->
-  "[#{company_id}](http://getsatisfaction.com/#{company_id})"
+company_web_link = (robot) ->
+  build_link robot, "http://getsatisfaction.com/#{company_id}", company_id
 
-topic_item = (topic) ->
+topic_item = (robot, topic) ->
   subject = topic.subject.replace /\*/g, '-'
   status = topic.status || 'none'
   style = topic.style.charAt(0).toUpperCase() + topic.style.slice(1)
-  author = "[#{topic.author.name}](#{topic.author.at_sfn})"
-  "* #{style} #{topic.id} (+#{topic.me_too_count}): [#{subject}](#{topic.at_sfn}) by #{author} (#{status})\n"
+  author = build_link robot, topic.author.at_sfn, topic.author.name
+  topic_link = build_link robot, topic.at_sfn, subject
+  "* #{style} #{topic.id} (+#{topic.me_too_count}): #{topic_link} by #{author} (#{status})\n"
 
 uri_query_string = (params) ->
   pairs = []
@@ -93,41 +94,134 @@ getsatisfaction_request = (msg, url, handler) ->
 
       handler content
 
+build_link = (robot, url, text) ->
+  if ! text
+    text = url
+  ct = robot_content_type(robot)
+  if ct == 'markdown'
+    return "[#{text}](#{url})"
+  else
+    return "<#{url}|#{text}>"
+
+faster_safer_mod = (n, base) ->
+  unless (jsmod = n % base) and ((n > 0) != (base > 0)) then jsmod
+  else jsmod + base
+
+style_to_emoji = (style) ->
+  style2emoji = {
+    "idea" : ":bulb:",
+    "problem" : ":warning:",
+    "question" : ":question:",
+    "praise" : ":heart:",
+    "update" : ":arrows_counterclockwise:"
+  }
+  emoji = ":question:"
+  style = style.toLowerCase()
+  if style of style2emoji
+    emoji = style2emoji[style]
+  return emoji
+
+format_date_nice = (date) ->
+  dt = new Date(date)
+  mn_name = month_name(dt.getMonth())
+  "#{mn_name} #{dt.getDate()}, #{dt.getFullYear()}"
+
+robot_content_type = (robot) ->
+  if robot.adapterName == 'glip'
+    return 'markdown'
+  else
+    return 'json'
+
+month_name = (month) ->
+  month_names = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return month_names[month]
+
+topics_content = (robot, style, query_robot, results) ->
+  ct = robot_content_type(robot)
+  if ct == 'json'
+    return topics_content_json(robot, style, query_robot, results)
+  else
+    return topics_content_markdown(robot, style, query_robot, results)
+
+topics_content_markdown = (robot, style, query_robot, results) ->
+  company_link = company_web_link(robot)
+  items = style
+  if items == 'topics'
+    items += " for query: #{query_robot}\n"
+  else
+    items += "\n"
+  content = "> #{results.total} #{company_link} #{items}\n"
+  content += topic_item(robot, result) for result in results.data
+  return content
+
+topics_content_json = (robot, style, query_robot, results) ->
+  company_link = company_web_link(robot)
+  items = style
+  if items == 'topics'
+    items += " for query: `#{query_robot}`\n"
+  else
+    items += "\n"
+  attachments = []
+  attachments.push {
+    pretext: "#{results.total} #{company_link} #{items}",
+    mrkdwn_in: ["pretext"]
+  }
+  i = 0
+  for topic in results.data
+    status = topic.status || 'no status'
+    emoji = style_to_emoji(topic.style)
+    date = format_date_nice(topic.last_active_at)
+    item = {
+      author_name: "#{emoji} #{topic.author.name} - #{date}",
+      author_link: topic.author.at_sfn,
+      title: "#{topic.subject} (+#{topic.me_too_count}, #{status})",
+      title_link: topic.at_sfn
+    }
+    modulo = faster_safer_mod(i, 2)
+    if modulo == 0
+      item['color'] = '#ff8800'
+    else
+      item['color'] = '#0073ae'
+    i = i + 1
+    attachments.push item
+  body = {
+    attachments: attachments
+  }
+  return body
+
 module.exports = (robot) ->
 
   robot.respond /(?:getsat|gs) help\s*$/i, (msg) ->
-    msg.send "> See: [https://github.com/grokify/hubot-getsatisfaction](https://github.com/grokify/hubot-getsatisfaction)"
+    url = "https://github.com/grokify/hubot-getsatisfaction"
+    link = build_link(robot, url)
+    msg.send "> See: #{link}"
 
   robot.respond /(?:getsat|gs) company\s*$/i, (msg) ->
-    company_link = company_web_link()
+    company_link = company_web_link(robot)
     msg.send "> Using Get Satisfaction company: #{company_link}"
 
   robot.respond /(?:getsat|gs) company\s+(\S+)\s*$/i, (msg) ->
     company_id = msg.match[1]
-    company_link = company_web_link()
+    company_link = company_web_link(robot)
     msg.send "> Get Satisfaction Company set to: #{company_link}"
 
   robot.respond /(?:getsat|gs) (all )?ideas$/i, (msg) ->
     query_url = company_url(company_id, queries.ideas)
     getsatisfaction_request msg, query_url, (results) ->
       topic_count = results.total
-      company_link = company_web_link()
+      company_link = company_web_link(robot)
       msg.send "> #{topic_count} ideas for: #{company_link}"
 
   robot.respond /(?:getsat|gs)\s+list\s+ideas$/i, (msg) ->
     query_url = company_url(company_id, queries.ideas)
     getsatisfaction_request msg, query_url, (results) ->
-      company_link = company_web_link()
-      content = "> #{results.total} ideas for: #{company_link}\n"
-      content += topic_item(result) for result in results.data
-      msg.send content
+      msg.send topics_content(robot, 'ideas', '', results)
 
   robot.respond /(?:getsat|gs)\s+search\s+(?:topics\s+)?(\S.*)\s*$/i, (msg) ->
     query_robot = msg.match[1]
     query_params = topics_query_robot_to_url(query_robot)
     query_url = company_url(company_id, queries.topics) + '?' + query_params
     getsatisfaction_request msg, query_url, (results) ->
-      company_link = company_web_link()
-      content = "> #{results.total} #{company_link} topics for query: #{query_robot}\n"
-      content += topic_item(result) for result in results.data
-      msg.send content
+      msg.send topics_content(robot, 'topics', query_robot, results)
