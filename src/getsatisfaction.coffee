@@ -66,7 +66,7 @@ topics_query_robot_to_url = (query_robot) ->
   i_query_start = 0
   for word, i in parts
     i_query_start = i
-    match = filter.exec(word);
+    match = filter.exec(word)
     if match != null
       params[match[1]] = filter_value(match[1], match[2])
     else
@@ -130,7 +130,7 @@ format_date_nice = (date) ->
 robot_content_type = (robot) ->
   views = { "json" : 1, "markdown" : 1 }
   if views.key? view.toLowerCase()
-   return view.toLowerCase()
+    return view.toLowerCase()
   else if robot.adapterName == 'glip'
     return 'markdown'
   else
@@ -139,7 +139,7 @@ robot_content_type = (robot) ->
 month_name = (month) ->
   month_names = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
-  ];
+  ]
   return month_names[month]
 
 topics_content = (robot, style, query_robot, results) ->
