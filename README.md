@@ -5,6 +5,8 @@
 Hubot Get Satisfaction handler script to query topics by company.
 
 [![NPM Version][npm-image]][npm-url]
+[![Code Climate][codeclimate-status-svg]][codeclimate-status-link]
+[![Scrutinizer Code Quality][scrutinizer-status-svg]][scrutinizer-status-link]
 [![NPM Downloads][downloads-image]][downloads-url]
 [![License][license-svg]][license-link]
 
@@ -108,6 +110,10 @@ Hubot Get Satisfaction script &copy; 2016 by John Wang
 
  [npm-image]: https://img.shields.io/npm/v/hubot-getsatisfaction.svg
  [npm-url]: https://npmjs.org/package/hubot-getsatisfaction
+ [codeclimate-status-svg]: https://codeclimate.com/github/grokify/hubot-getsatisfaction/badges/gpa.svg
+ [codeclimate-status-link]: https://codeclimate.com/github/grokify/hubot-getsatisfaction
+ [scrutinizer-status-svg]: https://scrutinizer-ci.com/g/grokify/hubot-getsatisfaction/badges/quality-score.png?b=master
+ [scrutinizer-status-link]: https://scrutinizer-ci.com/g/grokify/hubot-getsatisfaction/?branch=master
  [downloads-image]: https://img.shields.io/npm/dm/hubot-getsatisfaction.svg
  [downloads-url]: https://npmjs.org/package/hubot-getsatisfaction
  [story-status-svg]: https://badge.waffle.io/grokify/hubot-getsatisfaction.svg?label=ready&title=Ready
