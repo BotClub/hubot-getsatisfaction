@@ -5,7 +5,7 @@
 #   HUBOT_GETSATISFACTION_COMPANY
 #
 # Commands:
-#   hubot getsat search (topics) <QUERY> - returns a list of matching topics.
+#   hubot getsat search (topics) (filter) <QUERY> - returns a list of matching topics.
 #   hubot getsat (all) ideas - returns the total count of all ideas.
 #   hubot getsat company - returns the total count of all ideas.
 #   hubot getsat company <COMPANY_NAME> - sets company_name.
