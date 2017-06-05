@@ -76,10 +76,15 @@ $ mkdir myhubot
 $ cd myhubot
 $ yo hubot
 $ vi external-scripts.json
-$ HUBOT_GLIP_HOST=glip.com \
-HUBOT_GLIP_EMAIL=hubot@example.com \
-HUBOT_GLIP_PASSWORD=MySecretPassword \
-HUBOT_GETSATISFACTION_COMPANY=ringcentral ./bin/hubot -n hubot -a glip
+$ HUBOT_GLIP_SERVER=https://platform.ringcentral.com \
+HUBOT_GLIP_APP_KEY=MyGlipAppKey \
+HUBOT_GLIP_APP_SECRET=MyGlipAppSecret \
+HUBOT_GLIP_USERNAME=16505550123
+HUBOT_GLIP_EXTENSION=102
+HUBOT_GLIP_PASSWORD=MyUserPassword
+HUBOT_GETSATISFACTION_COMPANY=ringcentral \
+HUBOT_GETSATISFACTION_VIEW=markdown \
+./bin/hubot -n hubot -a glip
 ```
 
 ![Hubot Get Satisfaction Demo](docs/images/hubot_getsatisfaction_demo_glip_ringcentral-ringcentraldev_500x.png)
