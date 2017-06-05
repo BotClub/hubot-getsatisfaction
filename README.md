@@ -38,12 +38,20 @@ Alternately, you can also add `hubot-getsatisfaction` to your `package.json` fil
 | `HUBOT_GETSATISFACTION_VIEW` | No | Enumerated value [`json`,`markdown`]. Use `markdown` for Glip and `json` for Slack. |
 
 ## Usage
+
+### Commands
+
+Both keywords `getsat` and `gs` are used.
+
 ```
-hubot getsat search (topics) <QUERY> - returns a list of matching topics.
+hubot getsat search (topics) (filter) <QUERY> - returns a list of matching topics.
 hubot getsat (all) ideas - returns the total count of all ideas.
 hubot getsat company - returns the total count of all ideas.
 hubot getsat company <COMPANY_NAME> - sets company_name.
+hubot getsat help
 ```
+
+For more information on using filters, see the next section.
 
 ### Search Topics
 

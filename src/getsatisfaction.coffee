@@ -200,7 +200,20 @@ module.exports = (robot) ->
   robot.respond /(?:getsat|gs) help\s*$/i, (msg) ->
     url = "https://github.com/grokify/hubot-getsatisfaction"
     link = build_link(robot, url)
-    msg.send "> See: #{link}"
+    message = "**Commands**\n" + 
+      "> hubot getsat search (topics) (filter) <QUERY> - returns a list of matching topics.\n" +
+      "> hubot getsat (all) ideas - returns the total count of all ideas.\n" +
+      "> hubot getsat company - returns the total count of all ideas.\n"+ 
+      "> hubot getsat company <COMPANY_NAME> - sets company_name.\n" +
+      "> hubot getsat help\n" +
+      "**Filters**\n" +
+      "> sort: votes, newest, active, replies, unanswered. votes is an alias for most_me_toos\n" +
+      "> style: question, problem, praise, idea, update\n" +
+      "> status: none, pending, active, complete, rejected, open, closed. open and closed are meta values. open = none or pending or active, closed = complete or rejected\n" +
+      "**Notes**\n" +
+      "> `gs` can be substituted for `getsat`, e.g. `hubot gs search sort:votes glip\n" +
+      "> For more, see #{link}"
+    msg.send message
 
   robot.respond /(?:getsat|gs) company\s*$/i, (msg) ->
     company_link = company_web_link(robot)
