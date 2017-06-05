@@ -28,11 +28,12 @@ Then add **hubot-getsatisfaction** to your `external-scripts.json`:
 ["hubot-getsatisfaction"]
 ```
 
-Alternately, you can add `hubot-getsatisfaction` to your `package.json` file and then run `npm install`.
+Alternately, you can also add `hubot-getsatisfaction` to your `package.json` file and then run `npm install`.
 
 ## Configuration
 
-| Variable | Required | Description | 
+| Variable | Required | Description |
+|----------|----------|-------------|
 | `HUBOT_GETSATISFACTION_COMPANY` | Yes | API Company Name URL Slug, e.g. `ringcentraldev` |
 | `HUBOT_GETSATISFACTION_VIEW` | No | Enumerated value [`json`,`markdown`]. Use `markdown` for Glip and `json` for Slack. |
 
