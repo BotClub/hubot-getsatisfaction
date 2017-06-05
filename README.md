@@ -28,7 +28,7 @@ Then add **hubot-getsatisfaction** to your `external-scripts.json`:
 ["hubot-getsatisfaction"]
 ```
 
-Alternately, you can also add `hubot-getsatisfaction` to your `package.json` file and then run `npm install`.
+You can also add `hubot-getsatisfaction` to your `package.json` file and then run `npm install`.
 
 ## Configuration
 
